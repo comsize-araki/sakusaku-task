@@ -24,7 +24,8 @@
 		for (TaskBean str : list) {
 		%>
 		<tr>
-			<td><%=str.getTaskName()%></td>
+			<td><%=str.getTaskName()%>
+			<input type="hidden" name="taskid" value="<%=str.getTaskId()%>"></td>
 			<td><%=str.getCategoryName()%></td>
 			<%if (str.getLimitDate() == null) {%>
 			<td></td>
@@ -37,6 +38,14 @@
 		<%
 		}
 		%>
+		</table>
+		<br>
+		<form action="TaskEditServlet" method ="POST">
+		<input type="submit" value="タスク編集">
+		</form>
+		<form action="TaskDeleteServlet" method ="POST">
+		<input type="submit" value="タスク削除">
+		</form>
 </body>
 
 </html>
