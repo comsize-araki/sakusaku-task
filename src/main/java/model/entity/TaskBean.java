@@ -8,14 +8,23 @@ public class TaskBean {
 	//タスク名
 	private String taskName;
 
+	//カテゴリID
+	private int categoryId;
+
 	//カテゴリ情報
 	private String categoryName;
 
 	//期限
 	private LocalDate limitDate;
 
+	//担当者ID
+	private int userId;
+
 	//担当者情報
 	private String userName;
+
+	//ステータスコード
+	private String statusCode;
 
 	//ステータス情報
 	private String statusName;
@@ -30,6 +39,14 @@ public class TaskBean {
 
 	public void setTaskName(String taskName) {
 		this.taskName = taskName;
+	}
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public String getCategoryName() {
@@ -48,12 +65,28 @@ public class TaskBean {
 		this.limitDate = limitDate;
 	}
 
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getStatusCode() {
+		return statusCode;
+	}
+
+	public void setStatusCode(String statusCode) {
+		this.statusCode = statusCode;
 	}
 
 	public String getStatusName() {
