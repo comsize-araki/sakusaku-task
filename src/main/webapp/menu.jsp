@@ -13,7 +13,7 @@
 
 	<a href = "#">登録</a>
 	<br>
-	<a href = "task-view.jsp">一覧表示</a>
+	<a href = "TaskListServlet">一覧表示</a>
 	<br>
 	<a href = "logout.jsp">ログアウト</a>
 
