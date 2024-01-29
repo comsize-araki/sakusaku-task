@@ -9,7 +9,7 @@
 <body>
 	<a href = "#">登録</a>
 	<br>
-	<a href = "#">一覧表示</a>
+	<a href = "task-view.jsp">一覧表示</a>
 	<br>
 	<a href = "#">ログアウト</a>
 
