@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.dao.LoginDAO;
+import model.entity.CategoryBean;
+import model.entity.StatusBean;
 
 /**
  * Servlet implementation class LoginServlet
@@ -44,6 +48,11 @@ public class LoginServlet extends HttpServlet {
 		// DAOの生成
 		LoginDAO dao = new LoginDAO();
 		
+		// カテゴリーBeanのリスト
+		List<CategoryBean> category = new ArrayList<>();
+		// ステータスBeanのリスト
+		List<StatusBean> status = new ArrayList<>();
+		
 		// セッションオブジェクトの生成
 		HttpSession session = request.getSession();
 		
@@ -60,6 +69,10 @@ public class LoginServlet extends HttpServlet {
 			// ユーザー名の取得
 			userName = dao.getUserName(userId, password);
 			
+			// カテゴリーリストの取得
+			category = dao.category();
+			// ステータスリストの取得
+			status = dao.status();
 		}catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -69,6 +82,8 @@ public class LoginServlet extends HttpServlet {
 		if (isUserExists) {
 			// セッションスコープへの属性の設定
 			session.setAttribute("userName", userName);
+			session.setAttribute("category_list", category);
+			session.setAttribute("status_list", status);
 			// URLの設定
 			url = "menu.jsp";
 		}else {
