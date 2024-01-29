@@ -19,8 +19,8 @@ import model.entity.StatusBean;
 /**
  * Servlet implementation class TaskRegisterFromServlet
  */
-@WebServlet("/TaskRegisterFormServlet")
-public class TaskRegisterFormServlet extends HttpServlet {
+@WebServlet("/TaskRegisterServlet")
+public class TaskRegisterServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,6 +33,9 @@ public class TaskRegisterFormServlet extends HttpServlet {
 
 		//DAOオブジェクトの取得
 		TaskRegisterDAO dao = new TaskRegisterDAO();
+		
+		//転送先のURL用変数
+		String url = "";
 
 		try {
 
@@ -52,7 +55,7 @@ public class TaskRegisterFormServlet extends HttpServlet {
 		}
 		
 		//リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("task-register-form.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 
