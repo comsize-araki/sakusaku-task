@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -29,7 +30,7 @@ public class TaskListServlet extends HttpServlet {
 		
 		TaskListDAO taskListDAO = new TaskListDAO();
 		
-			List<TaskBean> list = null;
+			List<TaskBean> list = new ArrayList<>();
 		    
 		    //taskListDAOのListViewメソッドからList<TaskBean>きて代入する
 			try {

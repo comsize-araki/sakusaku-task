@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,14 @@ public class TaskListDAO {
 				TaskBean TaskBean = new TaskBean();
 				TaskBean.setTaskName(res.getString("task_name"));
 				TaskBean.setCategoryName(res.getString("category_name"));
-				TaskBean.setLimitDate(res.getDate("limit_date").toLocalDate());
+				if (res.getDate("limit_date") == null) {
+					
+					LocalDate limitDate  = null;
+					TaskBean.setLimitDate(limitDate);
+				}else {
+					TaskBean.setLimitDate(res.getDate("limit_date").toLocalDate());
+				}
+				
 				TaskBean.setUserName(res.getString("user_name"));
 				TaskBean.setStatusName(res.getString("status_name"));
 				TaskBean.setMemo(res.getString("memo"));

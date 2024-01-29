@@ -26,7 +26,10 @@
 		<tr>
 			<td><%=str.getTaskName()%></td>
 			<td><%=str.getCategoryName()%></td>
-			<td><%=str.getLimitDate()%></td>
+			<%if (str.getLimitDate() == null) {%>
+			<td></td>
+			<%}else{ %><td>
+			<%=str.getLimitDate()%></td><%} %>
 			<td><%=str.getUserName()%></td>
 			<td><%=str.getStatusName()%></td>
 			<td><%=str.getMemo()%></td>
