@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	ログアウトしました。
+	
+	<%
+	session.invalidate();
+	%>
 
 </body>
 </html>
