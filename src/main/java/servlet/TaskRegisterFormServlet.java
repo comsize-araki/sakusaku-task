@@ -18,8 +18,8 @@ import model.entity.StatusBean;
 /**
  * Servlet implementation class TaskRegisterFromServlet
  */
-@WebServlet("/TaskRegisterFromServlet")
-public class TaskRegisterFromServlet extends HttpServlet {
+@WebServlet("/TaskRegisterFormServlet")
+public class TaskRegisterFormServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

@@ -11,7 +11,7 @@
 	%>
 	<%=name %><br>
 
-	<a href = "#">登録</a>
+	<a href = "TaskRegisterFormServlet">登録</a>
 	<br>
 	<a href = "TaskListServlet">一覧表示</a>
 	<br>
