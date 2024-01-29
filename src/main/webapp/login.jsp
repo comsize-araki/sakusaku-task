@@ -12,7 +12,7 @@
 	ログインID:
 	<input type = "text" name = "userId" value = "" ><br>
 	パスワード:
-	<input type = "text" name = "password" value = "" ><br>
+	<input type = "password" name = "password" value = "" ><br>
 	<input type = "submit" value = "ログイン">  
 	<input type = "reset" value = "クリア" ><br>
 	</form>
