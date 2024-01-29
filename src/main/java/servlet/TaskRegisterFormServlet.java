@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.dao.TaskRegisterDAO;
 import model.entity.CategoryBean;
@@ -40,8 +41,9 @@ public class TaskRegisterFormServlet extends HttpServlet {
 			List<StatusBean> statusList = dao.status();
 
 			//リクエストスコープの挿入
-			request.setAttribute("category_list", catList);
-			request.setAttribute("status_list", statusList);
+			HttpSession session = request.getSession();
+			session.setAttribute("category_list", catList);
+			session.setAttribute("status_list", statusList);
 
 		} catch (SQLException | ClassNotFoundException e) {
 

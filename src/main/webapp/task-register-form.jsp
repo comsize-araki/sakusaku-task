@@ -8,8 +8,8 @@
 </head>
 <body>
 <%
-	List<CategoryBean> catList = (List<CategoryBean>) request.getAttribute("category_list");
-	List<StatusBean> statusList = (List<StatusBean>) request.getAttribute("status_list");
+	List<CategoryBean> catList = (List<CategoryBean>) session.getAttribute("category_list");
+	List<StatusBean> statusList = (List<StatusBean>) session.getAttribute("status_list");
 %>
 	<form action="TaskRegisterServlet" method="POST">
 		<table border="1">
