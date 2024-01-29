@@ -21,7 +21,7 @@ public class TaskBean {
 	private LocalDate limitDate;
 
 	//担当者ID
-	private int userId;
+	private String userId;
 
 	//担当者情報
 	private String userName;
@@ -76,11 +76,11 @@ public class TaskBean {
 		this.limitDate = limitDate;
 	}
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
