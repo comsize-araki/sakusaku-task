@@ -4,6 +4,9 @@ import java.time.LocalDate;
 
 //タスク一覧表示、登録、編集で使用するエンティティ
 public class TaskBean {
+	
+	//タスクID
+	private int taskId;
 
 	//タスク名
 	private String taskName;
@@ -33,6 +36,14 @@ public class TaskBean {
 	private String memo;
 
 	//アクセサ
+	public int getTaskId() {
+		return taskId;
+	}
+
+	public void setTaskId(int taskId) {
+		this.taskId = taskId;
+	}
+	
 	public String getTaskName() {
 		return taskName;
 	}
