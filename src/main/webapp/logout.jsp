@@ -12,6 +12,10 @@
 	<%
 	session.invalidate();
 	%>
+	<br>
+	<form action="login.jsp" method="POST">
+	<input type="submit" value="ログイン画面">
+	</form>
 
 </body>
 </html>
