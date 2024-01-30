@@ -18,7 +18,7 @@
 		<table border="1">
 			<tr>
 				<th>タスク名</th>
-				<td><input type="text" name="task_name" maxlength="50" size="50" value = "<%=bean.getTaskName()%>"></td>
+				<td><input type="text" name="task_name"  required maxlength="50" size="50" value = "<%=bean.getTaskName()%>"></td>
 			</tr>
 			<tr>
 				<th>カテゴリ情報</th>
@@ -28,7 +28,7 @@
 					for(CategoryBean cat: catList){
 				%>
 				<option value="<%=cat.getCategoryId()%>"
-			<%if (cat.getCategoryId() == bean.getCategoryId()) {%> selected <%}%>><%=cat.getCategoryName() %></option>
+			<%if (cat.getCategoryName().equals(bean.getCategoryName())) {%> selected <%}%>><%=cat.getCategoryName() %></option>
 			<% }%>
 
 				</select>
@@ -40,7 +40,7 @@
 			</tr>
 			<tr>
 				<th>担当者情報</th>
-				<td><input type="text" name="user_name" maxlength="20" size="20" value = "<%=bean.getUserName()%>" ></td>
+				<td><input type="text" required  name="user_name" maxlength="20" size="20" value = "<%=bean.getUserName()%>" ></td>
 			</tr>
 			<tr>
 				<th>ステータス情報</th>
@@ -49,12 +49,10 @@
 				<%
 					for(StatusBean status: statusList){
 				%>
-				<option value="<%=status.getStatusCode()%>">
-				<%=status.getStatusName() %>
-				</option>
-				<%
-					}
-				%>
+				<option value="<%=status.getStatusCode()%>"
+			<%if (status.getStatusName().equals(bean.getStatusName())) {%> selected <%}%>><%=status.getStatusName()%></option>
+			<% }%>
+
 				</select>
 				</td>
 			</tr>
