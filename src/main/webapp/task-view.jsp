@@ -43,7 +43,7 @@
 		<%}else if (select.equals("edit")){ %>
 		<td><input type="radio" name="taskid" value="<%=str.getTaskId()%>"></td>
 		<%}else { %>
-		<td><input type="checkbox" name="taskid" value="<%=str.getTaskId()%>"></td>
+		<td><input type="radio" name="taskid" value="<%=str.getTaskId()%>"></td>
 		<%} %>
 			
 			<td><%=str.getTaskName()%></td>

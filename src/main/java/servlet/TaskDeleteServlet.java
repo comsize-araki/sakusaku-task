@@ -43,9 +43,8 @@ public class TaskDeleteServlet extends HttpServlet {
 		try {
 			//コメントテーブルから削除
 			success = taskDeleteDAO.DeleteSuccess(taskid);
-			//コメントテーブルの削除ができていればタスクテーブルからも削除
-			if(success > 0) {
 				count = taskDeleteDAO.TaskDelete(taskid);
+			if(count > 0) {
 				RequestDispatcher rd = request.getRequestDispatcher("task-delete-success.jsp");
 		    rd.forward(request, response);
 			}else {
