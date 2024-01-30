@@ -20,7 +20,7 @@
 			<tr>
 				<th>カテゴリ情報</th>
 				<td>
-				<select name="caegory_id">
+				<select name="category_id">
 				<%
 					for(CategoryBean cat: catList){
 				%>

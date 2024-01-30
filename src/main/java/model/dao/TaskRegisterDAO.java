@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,23 +51,25 @@ public class TaskRegisterDAO {
 	public int register(TaskBean task) throws SQLException, ClassNotFoundException {
 
 		//SQL文の設定
-		String sql = "INSERT INTO m_user (task_name, category_id, limit_date, "
+		String sql = "INSERT INTO t_task (task_name, category_id, limit_date, "
 				+ "user_id, status_code, memo) VALUE (?, ?, ?, ?, ?, ?)";
 
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 
-			int num = 0;
-			
 			//プレイスホルダーへの代入
 			pstmt.setString(1, task.getTaskName());
 			pstmt.setInt(2, task.getCategoryId());
-			//https://qiita.com/Manabu-man/items/abaa7e9aa1773e282d02を参考にリクエストパラメータをLocalDateに変換する方法とLocalDateをセットする方法を検索
-//			pstmt.setDate(3, task.getLimitDate());
+			Date date = Date.valueOf(task.getLimitDate());
+			pstmt.setDate(3, date);
 			pstmt.setString(4, task.getUserId());
 			pstmt.setString(5, task.getStatusCode());
 			pstmt.setString(6, task.getMemo());
 			
+			//クエリ送信
+			int num = pstmt.executeUpdate();
+			
+			//得た更新件数をreturn
 			return num;
 		}
 	}
