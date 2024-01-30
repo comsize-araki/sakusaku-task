@@ -9,10 +9,19 @@ import java.sql.Types;
 
 import model.entity.TaskBean;
 
-//タスク情報登録の中でデータベース接続にかかわるDAOクラス
+/**
+ * タスク情報登録の中でデータベース接続にかかわるDAOクラス
+ * @author mori
+ */
 public class TaskRegisterDAO {
 
-	//ユーザ名からユーザIDを取得
+	/**
+	 * ユーザ名からユーザIDを取得
+	 * @param userName
+	 * @return 該当するユーザID
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public String getUserId(String userName) throws SQLException, ClassNotFoundException {
 
 		//SQL文の設定
@@ -49,6 +58,13 @@ public class TaskRegisterDAO {
 
 	}
 
+	/**
+	 * 
+	 * @param task
+	 * @return 登録した件数
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public int register(TaskBean task) throws SQLException, ClassNotFoundException {
 
 		//SQL文の設定
