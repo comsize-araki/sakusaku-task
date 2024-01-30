@@ -45,8 +45,16 @@ public class TaskRegisterServlet extends HttpServlet {
 		//リクエストパラメータの取得
 		task.setTaskName(request.getParameter("task_name"));
 		task.setCategoryId(Integer.parseInt(request.getParameter("category_id")));
-		Date date = Date.valueOf(request.getParameter("limit_date"));
-		task.setLimitDate(date.toLocalDate());
+		String date = request.getParameter("limit_date");
+		if (date == "") {
+
+			task.setLimitDate(null);
+
+		} else {
+			
+			task.setLimitDate(Date.valueOf(date).toLocalDate());
+
+		}
 		task.setUserName(request.getParameter("user_name"));
 		task.setStatusCode(request.getParameter("status_code"));
 		task.setMemo(request.getParameter("memo"));
@@ -58,7 +66,7 @@ public class TaskRegisterServlet extends HttpServlet {
 
 			if (userId == null) {
 
-				url = "task-register-faiure.jsp";
+				url = "task-register-failure.jsp";
 
 			} else {
 
@@ -70,7 +78,7 @@ public class TaskRegisterServlet extends HttpServlet {
 
 				if (num == 0) {
 
-					url = "task-register-faiure.jsp";
+					url = "task-register-failure.jsp";
 
 				} else {
 
@@ -97,7 +105,7 @@ public class TaskRegisterServlet extends HttpServlet {
 
 						if (status.getStatusCode().equals(task.getStatusCode())) {
 
-							task.setCategoryName(status.getStatusName());
+							task.setStatusName(status.getStatusName());
 
 						}
 

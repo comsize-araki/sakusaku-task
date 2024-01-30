@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 
 import model.entity.TaskBean;
 
@@ -60,15 +61,23 @@ public class TaskRegisterDAO {
 			//プレイスホルダーへの代入
 			pstmt.setString(1, task.getTaskName());
 			pstmt.setInt(2, task.getCategoryId());
-			Date date = Date.valueOf(task.getLimitDate());
-			pstmt.setDate(3, date);
+			if (task.getLimitDate() == null) {
+
+				pstmt.setNull(3, Types.DATE);
+
+			} else {
+
+				Date date = Date.valueOf(task.getLimitDate());
+				pstmt.setDate(3, date);
+
+			}
 			pstmt.setString(4, task.getUserId());
 			pstmt.setString(5, task.getStatusCode());
 			pstmt.setString(6, task.getMemo());
-			
+
 			//クエリ送信
 			int num = pstmt.executeUpdate();
-			
+
 			//得た更新件数をreturn
 			return num;
 		}
