@@ -9,11 +9,20 @@
 <body>
 	<%
 		List<TaskBean> list = (List) request.getAttribute("list"); 
+		String message = (String)request.getAttribute("message");
+		String select = (String)request.getAttribute("select");
 	%>
 <h1>タスク一覧画面</h1>
+
+		<a href = "TaskEditServlet?select=edit">編集する</a>     
+		<a href = "TaskEditServlet?select=delete">削除する</a>
+		
+		<%if (message != null) {%><h3><%=message %></h3><%} %>
+		
+		
 	<table border="1">
 		<tr>
-			<th>選択</th>
+			<%if (select != null){ %><th>選択</th><%} %>
 			<th>タスク名</th>
 			<th>カテゴリ情報</th>
 			<th>期限</th>
@@ -24,8 +33,13 @@
 		<%
 		for (TaskBean str : list) {
 		%>
-		<tr>
-			<td><input type="radio" name="taskid" value="<%=str.getTaskId()%>"></td>
+		<tr><%if (select == null) { %>
+		<%}else if (select.equals("edit")){ %>
+		<td><input type="radio" name="taskid" value="<%=str.getTaskId()%>"></td>
+		<%}else { %>
+		<td><input type="checkbox" name="taskid" value="<%=str.getTaskId()%>"></td>
+		<%} %>
+			
 			<td><%=str.getTaskName()%></td>
 			<td><%=str.getCategoryName()%></td>
 			<%if (str.getLimitDate() == null) {%>
@@ -39,14 +53,22 @@
 		<%
 		}
 		%>
+		
+
 		</table>
 		<br>
+		<%if (select == null) { %>
+		
+		<%}else if (select.equals("edit")){ %>
 		<form action="TaskEditServlet" method ="POST">
 		<input type="submit" value="タスク編集">
 		</form>
+		<%}else{ %>
 		<form action="TaskDeleteServlet" method ="POST">
 		<input type="submit" value="タスク削除">
 		</form>
+		<%} %>
+		
 </body>
 
 </html>

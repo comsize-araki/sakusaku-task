@@ -12,7 +12,7 @@
 	List<CategoryBean> catList = (List<CategoryBean>) session.getAttribute("category_list");
 	List<StatusBean> statusList = (List<StatusBean>) session.getAttribute("status_list");
 %>
-	<form action="TaskRegisterServlet" method="POST">
+	<form action="TaskEditServlet" method="POST">
 		<table border="1">
 			<tr>
 				<th>タスク名</th>
@@ -65,7 +65,8 @@
 				</td>
 			</tr>
 		</table>
-		<input type="submit" value="登録する">
+		<input type = "hidden" name = "taskId" value = "">
+		<input type="submit" value="編集する">
 		<input type="reset" value="クリア">
 	</form>
 
