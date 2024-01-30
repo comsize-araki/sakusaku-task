@@ -16,16 +16,16 @@ import model.dao.TaskListDAO;
 import model.entity.TaskBean;
 
 /**
- * Servlet implementation class TaskEditServlet
+ * Servlet implementation class TaskSelectServlet
  */
-@WebServlet("/TaskEditServlet")
-public class TaskEditServlet extends HttpServlet {
+@WebServlet("/TaskSelectServlet")
+public class TaskSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TaskEditServlet() {
+    public TaskSelectServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

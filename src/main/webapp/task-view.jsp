@@ -14,8 +14,8 @@
 	%>
 <h1>タスク一覧画面</h1>
 
-		<a href = "TaskEditServlet?select=edit">編集する</a>     
-		<a href = "TaskEditServlet?select=delete">削除する</a>
+		<a href = "TaskSelectServlet?select=edit">編集する</a>     
+		<a href = "TaskSelectServlet?select=delete">削除する</a>
 		
 		<%if (message != null) {%><h3><%=message %></h3><%} %>
 		
