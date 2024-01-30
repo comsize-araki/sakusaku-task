@@ -43,8 +43,22 @@ public class TaskEditServlet extends HttpServlet {
 				String taskIdStr = request.getParameter("taskid");
 				int taskId = Integer.parseInt(taskIdStr);
 				
+				TaskEditDAO dao = new TaskEditDAO();
+				TaskBean bean = new TaskBean();
+				
+				try {
+					bean = dao.selectOne(taskId);
+				} catch (SQLException | ClassNotFoundException e) {
+
+					e.printStackTrace();
+
+				}
+				
+				
 				// リクエストスコープにbeanの情報を設定
 				request.setAttribute("taskId", taskId);
+				request.setAttribute("bean", bean);
+				
 				
 				// 編集情報入力画面に遷移
 				RequestDispatcher rd = request.getRequestDispatcher("task-edit-form.jsp");
@@ -94,7 +108,7 @@ public class TaskEditServlet extends HttpServlet {
 
 					if (userId == null) {
 
-						url = "task-register-failure.jsp";
+						url = "task-edit-failure.jsp";
 
 					} else {
 
