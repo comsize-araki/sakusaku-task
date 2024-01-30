@@ -7,7 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	タスク削除確認画面
+	<%
+	 int count  = (int) request.getAttribute("count");
+	%>
+	<h1>タスク削除確認画面</h1>
+	
+	<%
+	if(count > 0){
+	%>
+	
+	<form action="" method="POST">
+		
+	</form>
 
 </body>
 </html>
