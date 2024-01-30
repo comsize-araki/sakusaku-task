@@ -135,6 +135,8 @@ public class TaskEditServlet extends HttpServlet {
 
 							//Beanをリクエストスコープに設定
 							request.setAttribute("task", task);
+							request.setAttribute(url, tDao);
+							
 
 							//転送先の設定
 							url = "task-edit-success.jsp";

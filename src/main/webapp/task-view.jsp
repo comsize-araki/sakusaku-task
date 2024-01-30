@@ -22,7 +22,7 @@
 		<%if (select == null) { %>
 		
 		<%}else if (select.equals("edit")){ %>
-		<form action="TaskEditServlet" method ="POST">
+		<form action="TaskEditServlet" method ="GET">
 		<%}else{ %>
 		<form action="TaskDeleteServlet" method ="POST">
 		<%} %>	
