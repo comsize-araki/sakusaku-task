@@ -37,6 +37,7 @@ public class TaskEditDAO {
 				pstmt.setString(4, task.getUserId());
 				pstmt.setString(5, task.getStatusCode());
 				pstmt.setString(6, task.getMemo());
+				pstmt.setInt(7, task.getTaskId());
 
 				//クエリ送信
 				int num = pstmt.executeUpdate();

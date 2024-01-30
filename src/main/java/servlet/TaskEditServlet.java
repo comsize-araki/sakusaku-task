@@ -57,12 +57,17 @@ public class TaskEditServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストのエンコーディング方式を指定
 		request.setCharacterEncoding("UTF-8");
+		
+		String taskIdStr = request.getParameter("taskId");
+		int taskId = Integer.parseInt(taskIdStr);
+		
 		//Beanオブジェクトの生成
 				TaskBean task = new TaskBean();
 				TaskEditDAO dao = new TaskEditDAO();
 				TaskRegisterDAO tDao = new TaskRegisterDAO();
 
 				//リクエストパラメータの取得
+				task.setTaskId(taskId);
 				task.setTaskName(request.getParameter("task_name"));
 				task.setCategoryId(Integer.parseInt(request.getParameter("category_id")));
 				String date = request.getParameter("limit_date");
@@ -75,6 +80,7 @@ public class TaskEditServlet extends HttpServlet {
 					task.setLimitDate(Date.valueOf(date).toLocalDate());
 
 				}
+				
 				task.setUserName(request.getParameter("user_name"));
 				task.setStatusCode(request.getParameter("status_code"));
 				task.setMemo(request.getParameter("memo"));
@@ -110,6 +116,7 @@ public class TaskEditServlet extends HttpServlet {
 							//カテゴリー・ステータスのリストを取得
 							List<CategoryBean> catList = (List<CategoryBean>) session.getAttribute("category_list");
 							List<StatusBean> statusList = (List<StatusBean>) session.getAttribute("status_list");
+							
 
 							//カテゴリーIDからカテゴリー名を取得
 							for (CategoryBean cat : catList) {
@@ -135,7 +142,7 @@ public class TaskEditServlet extends HttpServlet {
 
 							//Beanをリクエストスコープに設定
 							request.setAttribute("task", task);
-							request.setAttribute(url, tDao);
+							
 							
 
 							//転送先の設定
