@@ -19,7 +19,13 @@
 		
 		<%if (message != null) {%><h3><%=message %></h3><%} %>
 		
+		<%if (select == null) { %>
 		
+		<%}else if (select.equals("edit")){ %>
+		<form action="TaskEditServlet" method ="POST">
+		<%}else{ %>
+		<form action="TaskDeleteServlet" method ="POST">
+		<%} %>	
 	<table border="1">
 		<tr>
 			<%if (select != null){ %><th>選択</th><%} %>
@@ -60,11 +66,11 @@
 		<%if (select == null) { %>
 		
 		<%}else if (select.equals("edit")){ %>
-		<form action="TaskEditServlet" method ="POST">
+		
 		<input type="submit" value="タスク編集">
 		</form>
 		<%}else{ %>
-		<form action="TaskDeleteServlet" method ="POST">
+		
 		<input type="submit" value="タスク削除">
 		</form>
 		<%} %>
